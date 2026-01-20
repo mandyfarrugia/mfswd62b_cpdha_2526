@@ -5,6 +5,7 @@ import 'package:mfswd62b_cpd/widgets/asset_management_navigation_menu_drawer.dar
 
 import '../models/asset.dart';
 import '../models/asset_type.dart';
+import 'asset_management_add_screen.dart';
 
 class AssetManagementHomeScreen extends StatelessWidget {
   final List<Asset> assets = [
@@ -33,10 +34,13 @@ class AssetManagementHomeScreen extends StatelessWidget {
       appBar: AppBar(
         title: Text('Asset Management'),
         backgroundColor: Colors.blueAccent,
+        foregroundColor: Colors.white,
         actions: [
           IconButton(
             icon: Icon(Icons.add),
-            onPressed: () {}
+            onPressed: () {
+              Navigator.of(context).push(MaterialPageRoute(builder: (context) => const AssetManagementAddScreen()));
+            }
           ),
         ],
       ),

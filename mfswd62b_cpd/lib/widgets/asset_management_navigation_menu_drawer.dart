@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mfswd62b_cpd/widgets/asset_management_add_screen.dart';
 import 'asset_management_home_screen.dart';
 
 class AssetManagementNavigationMenuDrawer extends StatelessWidget {
@@ -46,7 +47,7 @@ class AssetManagementNavigationMenuDrawer extends StatelessWidget {
             title: const Text('Add new asset'),
             onTap: () {
               Navigator.pop(context);
-              Navigator.of(context).push(MaterialPageRoute(builder: (context) => AssetManagementHomeScreen()));
+              Navigator.of(context).push(MaterialPageRoute(builder: (context) => AssetManagementAddScreen()));
             },
           )
         ]
