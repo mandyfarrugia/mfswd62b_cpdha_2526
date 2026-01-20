@@ -38,7 +38,7 @@ class AssetManagementNavigationMenuDrawer extends StatelessWidget {
             title: const Text('Home'),
             onTap: () {
               Navigator.pop(context);
-              Navigator.of(context).push(MaterialPageRoute(builder: (context) => const AssetManagementHomeScreen()));
+              Navigator.of(context).push(MaterialPageRoute(builder: (context) => AssetManagementHomeScreen()));
             }
           ),
           ListTile(
@@ -46,7 +46,7 @@ class AssetManagementNavigationMenuDrawer extends StatelessWidget {
             title: const Text('Add new asset'),
             onTap: () {
               Navigator.pop(context);
-              Navigator.of(context).push(MaterialPageRoute(builder: (context) => const AssetManagementHomeScreen()));
+              Navigator.of(context).push(MaterialPageRoute(builder: (context) => AssetManagementHomeScreen()));
             },
           )
         ]
