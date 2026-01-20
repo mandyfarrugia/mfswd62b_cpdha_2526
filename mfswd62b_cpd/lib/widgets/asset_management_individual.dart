@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mfswd62b_cpd/mappers/asset_type_to_icon_mapper.dart';
 import 'package:mfswd62b_cpd/models/asset.dart';
+import 'package:mfswd62b_cpd/widgets/asset_card_button.dart';
 
 class AssetManagementIndividual extends StatelessWidget {
   final Asset assetToDisplay;
@@ -9,46 +10,35 @@ class AssetManagementIndividual extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(child: Card(
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          ListTile(
-            leading: Icon(AssetTypeToIconMapper.assetTypeToIconMap[assetToDisplay.assetType]),
-            title: Text(assetToDisplay.name),
-            subtitle: Text(assetToDisplay.getAssetTypeName()),
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.end,
+    return Padding(
+      padding: const EdgeInsets.all(8),
+      child: Center(
+        child: Card(
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
             children: [
-              ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.blueAccent,
-                  foregroundColor: Colors.white
-                ),
-                child: const Text('View'),
-                onPressed: () {},
+              ListTile(
+                leading: Icon(AssetTypeToIconMapper.assetTypeToIconMap[assetToDisplay.assetType]),
+                title: Text(assetToDisplay.name),
+                subtitle: Text(assetToDisplay.getAssetTypeName()),
               ),
-              ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: const Color.fromARGB(255, 238, 134, 49),
-                  foregroundColor: Colors.white
-                ),
-                child: const Text('Update'),
-                onPressed: () {},
-              ),
-              ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: const Color.fromARGB(255, 241, 25, 25),
-                  foregroundColor: Colors.white
-                ),
-                child: const Text('Delete'),
-                onPressed: () {},
+              Divider(thickness: .25),
+              Padding(
+                padding: const EdgeInsets.only(bottom: 8),
+                child: Wrap(
+                  alignment: WrapAlignment.end,
+                  spacing: 8,
+                  children: [
+                    AssetCardButton(backgroundColour: Colors.blueAccent, foregroundColour: Colors.white, buttonText: 'View', callback: () {}),
+                    AssetCardButton(backgroundColour: Colors.orangeAccent, foregroundColour: Colors.white, buttonText: 'Update', callback: () {}),
+                    AssetCardButton(backgroundColour: Colors.redAccent, foregroundColour: Colors.white, buttonText: 'Delete', callback: () {}),
+                  ],
+                )
               )
             ],
           )
-        ],
+        )
       )
-    ));
+    );
   }
 }
