@@ -16,7 +16,7 @@ class AssetManagementAddScreen extends StatefulWidget {
 class _AssetManagementAddScreenState extends State<AssetManagementAddScreen> {
   final TextEditingController _assetNameController = TextEditingController();
   final TextEditingController _serialNumberController = TextEditingController();
-  var _selectedAssetType = AssetType.adapter;
+  AssetType _selectedAssetType = AssetType.other;
 
   @override
   void dispose() {

@@ -11,6 +11,7 @@ class AssetTypeToIconMapper {
     AssetType.laptop: Icons.laptop,
     AssetType.mobile: Icons.smartphone,
     AssetType.software: Icons.window_sharp,
-    AssetType.tablet: Icons.tablet_mac_outlined
+    AssetType.tablet: Icons.tablet_mac_outlined,
+    AssetType.other: Icons.question_mark_sharp
   };
 }
