@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:objectbox/objectbox.dart';
 import 'package:uuid/uuid.dart';
 import '../models/asset_location.dart';
@@ -6,15 +5,19 @@ import '../models/asset_type.dart';
 
 const Uuid uuid = Uuid();
 
+@Entity()
 class Asset {
   @Id()
   int id = 0;
 
+  final assetLocation = ToOne<AssetLocation>();
+  
   String name;
   String serialNumber;
   String description;
+
+  @Property(type: PropertyType.date)
   DateTime dateCreatedAt;
-  AssetLocation assetLocation;
 
   @Property(type: PropertyType.byte)
   int assetTypeIndex;
@@ -23,10 +26,8 @@ class Asset {
     required this.name,
     required this.serialNumber,
     required this.description,
-    required AssetType assetType,
-    required this.assetLocation
+    required this.assetTypeIndex,
   }) :
-    this.assetTypeIndex = assetType.index,
     this.dateCreatedAt = DateTime.now();
 
   AssetType get assetType => AssetType.values[assetTypeIndex];

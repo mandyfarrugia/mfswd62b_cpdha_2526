@@ -1,3 +1,14 @@
 enum AssetType {
-  other, laptop, mobile, tablet, desktop, gaming, television, smartwatch, adapter, cable, peripheral, software
+  other,
+  laptop,
+  mobile,
+  tablet,
+  desktop,
+  gaming,
+  television,
+  smartwatch,
+  adapter,
+  cable,
+  peripheral,
+  software
 }

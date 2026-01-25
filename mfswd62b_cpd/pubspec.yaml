@@ -15,6 +15,7 @@ dependencies:
   hooks_riverpod: ^3.1.0
   objectbox: ^5.1.0
   objectbox_flutter_libs: any
+  path_provider: ^2.1.5
   shared_preferences: ^2.5.4
   uuid: ^4.5.2
 

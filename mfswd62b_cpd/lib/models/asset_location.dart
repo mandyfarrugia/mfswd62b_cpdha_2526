@@ -1,6 +1,12 @@
-class AssetLocation {
-  final double latitude;
-  final double longitude;
+import 'package:objectbox/objectbox.dart';
 
-  const AssetLocation({ required this.latitude, required this.longitude });
+@Entity()
+class AssetLocation {
+  @Id()
+  int id = 0;
+
+  double latitude;
+  double longitude;
+
+  AssetLocation({ required this.latitude, required this.longitude });
 }

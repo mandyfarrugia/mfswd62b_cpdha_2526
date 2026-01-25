@@ -1,0 +1,89 @@
+{
+  "_note1": "KEEP THIS FILE! Check it into a version control system (VCS) like git.",
+  "_note2": "ObjectBox manages crucial IDs for your object model. See docs for details.",
+  "_note3": "If you have VCS merge conflicts, you must resolve them according to ObjectBox docs.",
+  "entities": [
+    {
+      "id": "1:8014627527191618653",
+      "lastPropertyId": "7:5040272887353922637",
+      "name": "Asset",
+      "properties": [
+        {
+          "id": "1:4322038505590940249",
+          "name": "id",
+          "type": 6,
+          "flags": 1
+        },
+        {
+          "id": "2:3920705184743418150",
+          "name": "assetLocationId",
+          "indexId": "1:2234400058355222184",
+          "type": 11,
+          "flags": 520,
+          "relationTarget": "AssetLocation"
+        },
+        {
+          "id": "3:4367173278347829527",
+          "name": "name",
+          "type": 9
+        },
+        {
+          "id": "4:9125207870117589444",
+          "name": "serialNumber",
+          "type": 9
+        },
+        {
+          "id": "5:9007594376295194735",
+          "name": "description",
+          "type": 9
+        },
+        {
+          "id": "6:7050165405049558587",
+          "name": "dateCreatedAt",
+          "type": 10
+        },
+        {
+          "id": "7:5040272887353922637",
+          "name": "assetTypeIndex",
+          "type": 2
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "2:5276684097298549980",
+      "lastPropertyId": "3:3606377854039021069",
+      "name": "AssetLocation",
+      "properties": [
+        {
+          "id": "1:3711922629048250033",
+          "name": "id",
+          "type": 6,
+          "flags": 1
+        },
+        {
+          "id": "2:1714804950993016834",
+          "name": "latitude",
+          "type": 8
+        },
+        {
+          "id": "3:3606377854039021069",
+          "name": "longitude",
+          "type": 8
+        }
+      ],
+      "relations": []
+    }
+  ],
+  "lastEntityId": "2:5276684097298549980",
+  "lastIndexId": "1:2234400058355222184",
+  "lastRelationId": "0:0",
+  "lastSequenceId": "0:0",
+  "modelVersion": 5,
+  "modelVersionParserMinimum": 5,
+  "retiredEntityUids": [],
+  "retiredIndexUids": [],
+  "retiredPropertyUids": [],
+  "retiredRelationUids": [],
+  "version": 1
+}
