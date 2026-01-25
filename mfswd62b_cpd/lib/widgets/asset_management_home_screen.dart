@@ -4,7 +4,6 @@ import 'package:mfswd62b_cpd/widgets/asset_management_individual.dart';
 import 'package:mfswd62b_cpd/widgets/asset_management_navigation_menu_drawer.dart';
 
 import '../models/asset.dart';
-import '../models/asset_type.dart';
 import 'asset_management_add_screen.dart';
 
 class AssetManagementHomeScreen extends StatefulWidget {
@@ -38,18 +37,39 @@ class _AssetManagementHomeScreenState extends State<AssetManagementHomeScreen> {
             icon: Icon(Icons.add),
             onPressed: () {
               Navigator.of(context).push(MaterialPageRoute(builder: (context) => const AssetManagementAddScreen()));
+
+              setState(() {
+                assets = objectBoxStoreService.assetBox.getAll();
+              });
             }
           ),
         ]
       ),
-      body: ListView.builder(
-        itemCount: assets.length,
-        itemBuilder: (context, index) {
-          return AssetManagementIndividual(
-            assetToDisplay: assets[index],
+      body: StreamBuilder(
+        stream: objectBoxStoreService.assetBox.query().watch(triggerImmediately: true).map((query) => query.find()),
+        builder: (context, snapshot) {
+          final assets = snapshot.data ?? [];
+          if(assets.isEmpty) {
+            return const Center(
+              child: Text(
+                "No assets found!",
+                style: TextStyle(
+                  fontSize: 18
+                )
+              )
+            );
+          }
+
+          return ListView.builder(
+            itemCount: assets.length,
+            itemBuilder: (context, index) {
+              return AssetManagementIndividual(
+                assetToDisplay: assets[index],
+              );
+            },
           );
-        },
-      ),
+        }
+      )
     );
   }
 }
