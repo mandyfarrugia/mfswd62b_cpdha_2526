@@ -10,24 +10,24 @@ class Asset {
   @Id()
   int id = 0;
 
-  final String name;
-  final String serialNumber;
-  final String description;
-  final AssetType assetType;
-  final DateTime dateCreatedAt;
-  final AssetLocation assetLocation;
+  String name;
+  String serialNumber;
+  String description;
+  DateTime dateCreatedAt;
+  AssetLocation assetLocation;
+
+  @Property(type: PropertyType.byte)
+  int assetTypeIndex;
 
   Asset({
     required this.name,
     required this.serialNumber,
     required this.description,
-    required this.assetType,
+    required AssetType assetType,
     required this.assetLocation
   }) :
-    dateCreatedAt = DateTime.now();
+    this.assetTypeIndex = assetType.index,
+    this.dateCreatedAt = DateTime.now();
 
-  String getAssetTypeName() {
-    String assetTypeByName = this.assetType.name;
-    return assetTypeByName.characters.elementAt(0).toUpperCase() + assetTypeByName.substring(1, assetTypeByName.characters.length);
-  }
+  AssetType get assetType => AssetType.values[assetTypeIndex];
 }

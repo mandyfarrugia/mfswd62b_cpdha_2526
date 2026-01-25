@@ -20,7 +20,7 @@ class AssetManagementIndividual extends StatelessWidget {
               ListTile(
                 leading: Icon(AssetTypeToIconMapper.assetTypeToIconMap[assetToDisplay.assetType]),
                 title: Text(assetToDisplay.name),
-                subtitle: Text(assetToDisplay.getAssetTypeName()),
+                subtitle: Text(assetToDisplay.serialNumber),
               ),
               Divider(thickness: .25),
               Padding(
