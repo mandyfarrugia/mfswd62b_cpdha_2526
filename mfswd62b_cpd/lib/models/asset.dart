@@ -1,12 +1,15 @@
-import 'package:flutter/cupertino.dart';
-import 'package:mfswd62b_cpd/models/asset_location.dart';
-import 'package:mfswd62b_cpd/models/asset_type.dart';
+import 'package:flutter/material.dart';
+import 'package:objectbox/objectbox.dart';
 import 'package:uuid/uuid.dart';
+import '../models/asset_location.dart';
+import '../models/asset_type.dart';
 
 const Uuid uuid = Uuid();
 
 class Asset {
-  final String id;
+  @Id()
+  int id = 0;
+
   final String name;
   final String serialNumber;
   final String description;
@@ -21,7 +24,6 @@ class Asset {
     required this.assetType,
     required this.assetLocation
   }) :
-    id = uuid.v4(),
     dateCreatedAt = DateTime.now();
 
   String getAssetTypeName() {

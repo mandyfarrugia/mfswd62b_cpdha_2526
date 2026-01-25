@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mfswd62b_cpd/widgets/asset_card_button.dart';
 import 'package:mfswd62b_cpd/widgets/asset_management_navigation_menu_drawer.dart';
-
 import '../models/asset_type.dart';
 
 class AssetManagementAddScreen extends StatefulWidget {
@@ -88,20 +87,22 @@ class _AssetManagementAddScreenState extends State<AssetManagementAddScreen> {
             const SizedBox(height: 12),
             Row(
               children: [
-                DropdownButton(
-                  value: this._selectedAssetType,
-                  items: AssetType.values.map((assetType) =>
-                    DropdownMenuItem(
-                      value: assetType,
-                      child: Text(assetType.name)
-                    )
-                  ).toList(),
-                  onChanged: (value) {
-                    if(value == null) return;
-                    setState(() {
-                      this._selectedAssetType = value;
-                    });
-                  },
+                Expanded(
+                  child: DropdownButton(
+                    value: this._selectedAssetType,
+                    items: AssetType.values.map((assetType) =>
+                      DropdownMenuItem(
+                        value: assetType,
+                        child: Text(assetType.name)
+                      )
+                    ).toList(),
+                    onChanged: (value) {
+                      if(value == null) return;
+                      setState(() {
+                        this._selectedAssetType = value;
+                      });
+                    },
+                  )
                 )
               ],
             ),
