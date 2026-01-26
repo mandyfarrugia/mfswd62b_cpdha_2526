@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:mfswd62b_cpd/providers/asset_state_notifier.dart';
 import 'package:mfswd62b_cpd/widgets/asset_card_button.dart';
 import 'package:mfswd62b_cpd/widgets/asset_management_navigation_menu_drawer.dart';
+import '../models/asset.dart';
 import '../models/asset_type.dart';
 
 class AssetManagementAddScreen extends ConsumerStatefulWidget {
@@ -16,18 +18,40 @@ class AssetManagementAddScreen extends ConsumerStatefulWidget {
 class _AssetManagementAddScreenState extends ConsumerState<AssetManagementAddScreen> {
   final TextEditingController _assetNameController = TextEditingController();
   final TextEditingController _serialNumberController = TextEditingController();
+  final TextEditingController _descriptionController = TextEditingController();
   AssetType _selectedAssetType = AssetType.other;
 
   @override
   void dispose() {
     this._assetNameController.dispose();
     this._serialNumberController.dispose();
+    this._descriptionController.dispose();
     super.dispose();
   }
 
   void _addAsset() {
     final assetName = this._assetNameController.text.trim();
     final serialNumber = this._serialNumberController.text.trim();
+    final description = this._descriptionController.text.trim();
+
+    if(assetName.isEmpty || serialNumber.isEmpty) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Please make sure the asset comprises of a name and a serial number!'))
+      );
+
+      return;
+    }
+
+    final asset = Asset(
+      name: assetName,
+      serialNumber: serialNumber,
+      description: description,
+      assetTypeIndex: this._selectedAssetType.index
+    );
+
+    ref.read(assetProvider.notifier).addAsset(asset);
+
+    Navigator.pop(context);
   }
 
   @override
@@ -118,7 +142,7 @@ class _AssetManagementAddScreenState extends ConsumerState<AssetManagementAddScr
                   backgroundColour: Colors.deepPurpleAccent,
                   foregroundColour: Colors.white,
                   buttonText: 'Add new asset',
-                  callback: () {}
+                  callback: _addAsset
                 )
               ],
             )
