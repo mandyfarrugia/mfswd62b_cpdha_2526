@@ -1,31 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:mfswd62b_cpd/main.dart';
+import 'package:mfswd62b_cpd/providers/asset_state_notifier.dart';
+import 'package:mfswd62b_cpd/widgets/asset_list_render.dart';
 import 'package:mfswd62b_cpd/widgets/asset_management_individual.dart';
 import 'package:mfswd62b_cpd/widgets/asset_management_navigation_menu_drawer.dart';
-
-import '../models/asset.dart';
 import 'asset_management_add_screen.dart';
 
-class AssetManagementHomeScreen extends StatefulWidget {
+class AssetManagementHomeScreen extends ConsumerWidget {
   const AssetManagementHomeScreen({super.key});
 
   @override
-  State<StatefulWidget> createState() {
-    return _AssetManagementHomeScreenState();
-  }
-}
-
-class _AssetManagementHomeScreenState extends State<AssetManagementHomeScreen> {
-  late List<Asset> assets;
-  
-  @override
-  void initState() {
-    super.initState();
-    assets = objectBoxStoreService.assetBox.getAll();
-  }
-
-  @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
       drawer: const AssetManagementNavigationMenuDrawer(),
       appBar: AppBar(
@@ -37,39 +23,11 @@ class _AssetManagementHomeScreenState extends State<AssetManagementHomeScreen> {
             icon: Icon(Icons.add),
             onPressed: () {
               Navigator.of(context).push(MaterialPageRoute(builder: (context) => const AssetManagementAddScreen()));
-
-              setState(() {
-                assets = objectBoxStoreService.assetBox.getAll();
-              });
             }
           ),
         ]
       ),
-      body: StreamBuilder(
-        stream: objectBoxStoreService.assetBox.query().watch(triggerImmediately: true).map((query) => query.find()),
-        builder: (context, snapshot) {
-          final assets = snapshot.data ?? [];
-          if(assets.isEmpty) {
-            return const Center(
-              child: Text(
-                "No assets found!",
-                style: TextStyle(
-                  fontSize: 18
-                )
-              )
-            );
-          }
-
-          return ListView.builder(
-            itemCount: assets.length,
-            itemBuilder: (context, index) {
-              return AssetManagementIndividual(
-                assetToDisplay: assets[index],
-              );
-            },
-          );
-        }
-      )
+      body: AssetListRender()
     );
   }
 }

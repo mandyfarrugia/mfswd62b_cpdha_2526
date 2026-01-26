@@ -8,8 +8,5 @@ late ObjectBoxStoreService objectBoxStoreService;
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   objectBoxStoreService = await ObjectBoxStoreService.create();
-
   runApp(const ProviderScope(child: MaterialApp(debugShowCheckedModeBanner: false, home: AssetManagementHomeScreen())));
-
-  //runApp(MaterialApp(debugShowCheckedModeBanner: false, home: AssetManagementHomeScreen()));
 }
