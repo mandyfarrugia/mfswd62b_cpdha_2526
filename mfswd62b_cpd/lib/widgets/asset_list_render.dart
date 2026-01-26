@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:mfswd62b_cpd/providers/asset_state_notifier.dart';
-import 'package:mfswd62b_cpd/widgets/asset_management_individual.dart';
+import 'package:mfswd62b_cpd/widgets/asset_card_widget.dart';
 
 class AssetListRender extends ConsumerWidget {
   const AssetListRender({super.key});
@@ -15,7 +15,7 @@ class AssetListRender extends ConsumerWidget {
       ListView.builder(
         itemCount: assets.length,
         itemBuilder: (context, index) {
-        return AssetManagementIndividual(
+        return AssetCardWidget(
           assetToDisplay: assets[index]
         );
       },

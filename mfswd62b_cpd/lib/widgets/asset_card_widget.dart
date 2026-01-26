@@ -3,10 +3,10 @@ import 'package:mfswd62b_cpd/mappers/asset_type_to_icon_mapper.dart';
 import 'package:mfswd62b_cpd/models/asset.dart';
 import 'package:mfswd62b_cpd/widgets/asset_card_button.dart';
 
-class AssetManagementIndividual extends StatelessWidget {
+class AssetCardWidget extends StatelessWidget {
   final Asset assetToDisplay;
 
-  const AssetManagementIndividual({required this.assetToDisplay, super.key});
+  const AssetCardWidget({required this.assetToDisplay, super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -21,6 +21,7 @@ class AssetManagementIndividual extends StatelessWidget {
                 leading: Icon(AssetTypeToIconMapper.assetTypeToIconMap[assetToDisplay.assetType]),
                 title: Text(assetToDisplay.name),
                 subtitle: Text(assetToDisplay.serialNumber),
+                trailing: Text(assetToDisplay.assetLocation.target?.latitude.toString() ?? "No location provided!")
               ),
               Divider(thickness: .25),
               Padding(

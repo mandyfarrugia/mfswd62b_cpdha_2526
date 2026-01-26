@@ -1,5 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:mfswd62b_cpd/main.dart';
+import 'package:mfswd62b_cpd/models/asset_location.dart';
+import 'package:mfswd62b_cpd/services/location_service.dart';
 import '../models/asset.dart';
 
 final assetProvider = StateNotifierProvider<AssetStateNotifier, List<Asset>>(
@@ -17,7 +19,10 @@ class AssetStateNotifier extends StateNotifier<List<Asset>> {
     super.state = objectBoxStoreService.assetBox.getAll();
   }
 
-  void addAsset(Asset asset) {
+  Future<void> addAsset(Asset asset) async {
+    final locationFetchedFromGeolocator = await LocationService.fetchCurrentLocation();
+    objectBoxStoreService.store.box<AssetLocation>().put(locationFetchedFromGeolocator);
+    asset.assetLocation.target = locationFetchedFromGeolocator;
     objectBoxStoreService.assetBox.put(asset);
     this.loadAssets();
   }
