@@ -3,6 +3,8 @@ import 'package:mfswd62b_cpd/mappers/asset_type_to_icon_mapper.dart';
 import 'package:mfswd62b_cpd/models/asset.dart';
 import 'package:mfswd62b_cpd/widgets/asset_card_button.dart';
 
+import 'view_asset_screen.dart';
+
 class AssetCardWidget extends StatelessWidget {
   final Asset assetToDisplay;
 
@@ -30,7 +32,11 @@ class AssetCardWidget extends StatelessWidget {
                   alignment: WrapAlignment.end,
                   spacing: 8,
                   children: [
-                    AssetCardButton(backgroundColour: Colors.blueAccent, foregroundColour: Colors.white, buttonText: 'View', callback: () {}),
+                    AssetCardButton(backgroundColour: Colors.blueAccent, foregroundColour: Colors.white, buttonText: 'View', callback: () {
+                      Navigator.of(context).push(MaterialPageRoute(builder: (context) {
+                        return ViewAssetScreen(assetToDisplay: assetToDisplay);
+                      }));
+                    }),
                     AssetCardButton(backgroundColour: Colors.orangeAccent, foregroundColour: Colors.white, buttonText: 'Update', callback: () {}),
                     AssetCardButton(backgroundColour: Colors.redAccent, foregroundColour: Colors.white, buttonText: 'Delete', callback: () {}),
                   ],

@@ -107,6 +107,7 @@ class _AssetManagementAddScreenState extends ConsumerState<AssetManagementAddScr
                 Expanded(
                   child: TextField(
                     keyboardType: TextInputType.text,
+                    controller: _descriptionController,
                     decoration: const InputDecoration(
                       labelText: 'Description'
                     ),
