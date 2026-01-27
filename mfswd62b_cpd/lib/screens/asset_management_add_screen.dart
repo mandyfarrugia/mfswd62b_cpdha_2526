@@ -14,7 +14,6 @@ class AssetManagementAddScreen extends ConsumerStatefulWidget {
     return _AssetManagementAddScreenState();
   }
 }
-
 class _AssetManagementAddScreenState extends ConsumerState<AssetManagementAddScreen> {
   final TextEditingController _assetNameController = TextEditingController();
   final TextEditingController _serialNumberController = TextEditingController();
@@ -88,7 +87,7 @@ class _AssetManagementAddScreenState extends ConsumerState<AssetManagementAddScr
                 )
               ],
             ),
-            const SizedBox(width: 12),
+            const SizedBox(height: 12),
             Row(
               children: [
                 Expanded(
@@ -137,11 +136,11 @@ class _AssetManagementAddScreenState extends ConsumerState<AssetManagementAddScr
                 )
               ],
             ),
-            const SizedBox(width: 12),
+            const SizedBox(height: 12),
             Row(children: [
                 AssetButton(
                   iconData: Icons.add,
-                  backgroundColour: Colors.deepPurpleAccent,
+                  backgroundColour: Colors.blueAccent,
                   foregroundColour: Colors.white,
                   buttonText: 'Add new asset',
                   callback: _addAsset
