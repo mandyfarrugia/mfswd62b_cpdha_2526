@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:mfswd62b_cpd/widgets/asset_location_widget.dart';
-import 'package:url_launcher/url_launcher.dart';
 import '../mappers/asset_type_to_icon_mapper.dart';
 import '../models/asset.dart';
 import './asset_card_button.dart';
@@ -31,11 +30,17 @@ class AdvancedAssetCardWidget extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     AssetLocationWidget(assetToDisplay: assetToDisplay),
-                    // Row(
-                    //   children: [
-                    //     Text(assetToDisplay.dateCreatedAt.toLocal().toString())
-                    //   ],
-                    // ),
+                    const SizedBox(height: 12),
+                    Row(children: [
+                      Icon(Icons.calendar_month),
+                      SizedBox(width: 6),
+                      Text('Date created', style: TextStyle(fontWeight: FontWeight.bold))
+                    ]),
+                    Row(
+                      children: [
+                        Text(assetToDisplay.formattedDate)
+                      ],
+                    ),
                     const SizedBox(height: 12),
                     Row(children: [
                       Icon(Icons.description),
@@ -43,7 +48,7 @@ class AdvancedAssetCardWidget extends StatelessWidget {
                       Text("Description", style: TextStyle(fontWeight: FontWeight.bold))
                     ]),
                     Text(
-                      assetToDisplay.description.isNotEmpty 
+                      assetToDisplay.description.isNotEmpty
                       ? assetToDisplay.description : 'No description available!'),
                     const SizedBox(height: 8)
                   ],
