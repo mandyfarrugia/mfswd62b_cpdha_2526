@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:mfswd62b_cpd/main.dart';
 import 'package:mfswd62b_cpd/models/asset.dart';
 import 'package:mfswd62b_cpd/widgets/asset_button.dart';
 import '../mappers/asset_type_to_icon_mapper.dart';
@@ -38,8 +39,12 @@ class AssetCardWidget extends ConsumerWidget {
                       }));
                     }),
                     AssetButton(iconData: Icons.person_pin_circle, backgroundColour: Colors.orangeAccent, foregroundColour: Colors.white, buttonText: 'Update', callback: () {}),
-                    AssetButton(iconData: Icons.delete, backgroundColour: Colors.redAccent, foregroundColour: Colors.white, buttonText: 'Delete', callback: () {
-                      ref.read(assetProvider.notifier).deleteAsset(assetToDisplay);
+                    AssetButton(iconData: Icons.delete, backgroundColour: Colors.redAccent, foregroundColour: Colors.white, buttonText: 'Delete', callback: () async {
+                      bool? deleteConfirmed = await deleteConfirmationService.showDeleteConfirmationDialog(context);
+
+                      if(deleteConfirmed != null && deleteConfirmed) {
+                        ref.read(assetProvider.notifier).deleteAsset(assetToDisplay);
+                      }
                     }),
                   ],
                 )

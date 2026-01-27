@@ -15,7 +15,7 @@ class AssetLocationWidget extends StatelessWidget {
     if (!canLaunchUrl) {
       if (context.mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text('Could not open map')),
+          const SnackBar(content: Text('Could not open map'))
         );
       }
     }
@@ -69,26 +69,6 @@ class AssetLocationWidget extends StatelessWidget {
             await redirectToMap(context, latitude, longitude);
           }
         )
-
-        // ElevatedButton.icon(
-        //   style: ElevatedButton.styleFrom(backgroundColor: Colors.blueAccent, foregroundColor: Colors.white),
-        //   icon: const Icon(Icons.map),
-        //   label: const Text('Open in map'),
-        //   onPressed: () async {
-        //     final uri = Uri.parse(
-        //       'https://www.openstreetmap.org/?mlat=$latitude&mlon=$longitude#map=16/$latitude/$longitude',
-        //     );
-
-        //     if (!await launchUrl(
-        //       uri,
-        //       mode: LaunchMode.externalApplication,
-        //     )) {
-        //       ScaffoldMessenger.of(context).showSnackBar(
-        //         const SnackBar(content: Text('Could not open map')),
-        //       );
-        //     }
-        //   },
-        // ),
       ],
     );
   }

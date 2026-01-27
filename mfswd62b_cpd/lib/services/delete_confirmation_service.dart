@@ -1,10 +1,16 @@
 import 'package:flutter/material.dart';
 
 class DeleteConfirmationService {
+  const DeleteConfirmationService();
+
+  DeleteConfirmationService.create() {
+    DeleteConfirmationService();
+  }
+
   Future<bool?> showDeleteConfirmationDialog(BuildContext context) {
     return showDialog<bool>(
       context: context,
-      barrierDismissible: false,
+      barrierDismissible: true,
       builder: (context) {
         return AlertDialog(
           title: const Text('Delete asset'),
