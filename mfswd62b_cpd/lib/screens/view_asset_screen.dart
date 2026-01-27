@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mfswd62b_cpd/screens/asset_management_add_screen.dart';
+import 'package:mfswd62b_cpd/screens/asset_management_home_screen.dart';
 import 'package:mfswd62b_cpd/widgets/asset_button.dart';
 import '../models/asset.dart';
 import '../widgets/asset_management_navigation_menu_drawer.dart';
@@ -32,7 +33,7 @@ class ViewAssetScreen extends StatelessWidget {
         ],
       ),
       body: Padding(
-        padding: EdgeInsets.all(8),
+        padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
         child: Column(
           children: [
             Row(
@@ -42,7 +43,11 @@ class ViewAssetScreen extends StatelessWidget {
                   backgroundColour: Colors.blueAccent,
                   foregroundColour: Colors.white,
                   buttonText: 'Back to all assets',
-                  callback: () {},
+                  callback: () {
+                    Navigator.of(context).push(MaterialPageRoute(builder: (context) {
+                      return AssetManagementHomeScreen();
+                    }));
+                  },
                 ),
               ],
             ),
