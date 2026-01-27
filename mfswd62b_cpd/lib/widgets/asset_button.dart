@@ -11,13 +11,14 @@ class AssetButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return IntrinsicWidth(child: ElevatedButton(
-      style: ElevatedButton.styleFrom(
-        backgroundColor: backgroundColour,
-        foregroundColor: foregroundColour,
-        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
-        minimumSize: Size.zero
-      ),
+    return IntrinsicWidth(
+      child: ElevatedButton(
+        style: ElevatedButton.styleFrom(
+          backgroundColor: backgroundColour,
+          foregroundColor: foregroundColour,
+          padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 12),
+          minimumSize: Size.zero
+        ),
       onPressed: callback,
       child: Row(children: [
         Icon(iconData),
