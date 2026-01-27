@@ -3,7 +3,7 @@ import 'package:mfswd62b_cpd/mappers/asset_type_to_icon_mapper.dart';
 import 'package:mfswd62b_cpd/models/asset.dart';
 import 'package:mfswd62b_cpd/widgets/asset_card_button.dart';
 
-import 'view_asset_screen.dart';
+import '../screens/view_asset_screen.dart';
 
 class AssetCardWidget extends StatelessWidget {
   final Asset assetToDisplay;

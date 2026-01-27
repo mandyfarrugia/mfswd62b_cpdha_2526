@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:mfswd62b_cpd/widgets/asset_management_add_screen.dart';
-import 'asset_management_home_screen.dart';
+import 'package:mfswd62b_cpd/screens/asset_management_add_screen.dart';
+import '../screens/asset_management_home_screen.dart';
 
 class AssetManagementNavigationMenuDrawer extends StatelessWidget {
   const AssetManagementNavigationMenuDrawer({super.key});

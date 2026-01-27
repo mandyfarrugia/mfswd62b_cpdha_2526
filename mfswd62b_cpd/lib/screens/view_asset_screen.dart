@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:mfswd62b_cpd/widgets/asset_management_add_screen.dart';
+import 'package:mfswd62b_cpd/screens/asset_management_add_screen.dart';
 import '../models/asset.dart';
-import './asset_management_navigation_menu_drawer.dart';
-import './advanced_asset_card_widget.dart';
+import '../widgets/asset_management_navigation_menu_drawer.dart';
+import '../widgets/advanced_asset_card_widget.dart';
 
 class ViewAssetScreen extends StatelessWidget {
   final Asset assetToDisplay;
