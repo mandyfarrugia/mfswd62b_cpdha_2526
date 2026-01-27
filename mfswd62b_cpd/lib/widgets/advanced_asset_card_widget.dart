@@ -1,16 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:mfswd62b_cpd/widgets/asset_location_widget.dart';
+import '../main.dart';
 import '../mappers/asset_type_to_icon_mapper.dart';
 import '../models/asset.dart';
+import '../providers/asset_state_notifier.dart';
 import './asset_button.dart';
 
-class AdvancedAssetCardWidget extends StatelessWidget {
+class AdvancedAssetCardWidget extends ConsumerWidget {
   final Asset assetToDisplay;
 
   const AdvancedAssetCardWidget({ required this.assetToDisplay, super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return Padding(
       padding: const EdgeInsets.all(8),
       child: Center(
@@ -62,7 +65,26 @@ class AdvancedAssetCardWidget extends StatelessWidget {
                   spacing: 8,
                   children: [
                     AssetButton(iconData: Icons.person_pin_circle, backgroundColour: Colors.orangeAccent, foregroundColour: Colors.white, buttonText: 'Update', callback: () {}),
-                    AssetButton(iconData: Icons.delete, backgroundColour: Colors.redAccent, foregroundColour: Colors.white, buttonText: 'Delete', callback: () {}),
+                    AssetButton(
+                      iconData: Icons.delete,
+                      backgroundColour: Colors.redAccent,
+                      foregroundColour: Colors.white,
+                      buttonText: 'Delete',
+                      callback: () async {
+                        bool? deleteConfirmed = await deleteConfirmationService.showDeleteConfirmationDialog(context);
+
+                      if(deleteConfirmed != null && deleteConfirmed) {
+                        ref.read(assetProvider.notifier).deleteAsset(assetToDisplay);
+
+                        if(context.mounted) {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(content: Text('Asset deleted successfully!'))
+                          );
+
+                          Navigator.of(context).pop();
+                        }
+                      }
+                      }),
                   ],
                 )
               )

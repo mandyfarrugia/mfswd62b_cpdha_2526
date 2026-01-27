@@ -44,6 +44,14 @@ class AssetCardWidget extends ConsumerWidget {
 
                       if(deleteConfirmed != null && deleteConfirmed) {
                         ref.read(assetProvider.notifier).deleteAsset(assetToDisplay);
+
+                        if(context.mounted) {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(content: Text('Asset deleted successfully!'))
+                          );
+
+                          Navigator.of(context).pop();
+                        }
                       }
                     }),
                   ],
