@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mfswd62b_cpd/screens/asset_management_add_screen.dart';
+import 'package:mfswd62b_cpd/widgets/asset_button.dart';
 import '../models/asset.dart';
 import '../widgets/asset_management_navigation_menu_drawer.dart';
 import '../widgets/advanced_asset_card_widget.dart';
@@ -7,7 +8,7 @@ import '../widgets/advanced_asset_card_widget.dart';
 class ViewAssetScreen extends StatelessWidget {
   final Asset assetToDisplay;
 
-  const ViewAssetScreen({ required this.assetToDisplay, super.key});
+  const ViewAssetScreen({required this.assetToDisplay, super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -21,12 +22,34 @@ class ViewAssetScreen extends StatelessWidget {
           IconButton(
             icon: Icon(Icons.add),
             onPressed: () {
-              Navigator.of(context).push(MaterialPageRoute(builder: (context) => const AssetManagementAddScreen()));
-            }
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (context) => const AssetManagementAddScreen(),
+                ),
+              );
+            },
           ),
-        ]
+        ],
       ),
-      body: AdvancedAssetCardWidget(assetToDisplay: assetToDisplay)
+      body: Padding(
+        padding: EdgeInsets.all(8),
+        child: Column(
+          children: [
+            Row(
+              children: [
+                AssetButton(
+                  iconData: Icons.arrow_back_outlined,
+                  backgroundColour: Colors.blueAccent,
+                  foregroundColour: Colors.white,
+                  buttonText: 'Back to all assets',
+                  callback: () {},
+                ),
+              ],
+            ),
+            AdvancedAssetCardWidget(assetToDisplay: assetToDisplay),
+          ],
+        ),
+      ),
     );
   }
 }

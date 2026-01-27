@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:mfswd62b_cpd/widgets/asset_location_widget.dart';
 import '../mappers/asset_type_to_icon_mapper.dart';
 import '../models/asset.dart';
-import './asset_card_button.dart';
+import 'asset_button.dart';
 
 class AdvancedAssetCardWidget extends StatelessWidget {
   final Asset assetToDisplay;
@@ -62,8 +62,8 @@ class AdvancedAssetCardWidget extends StatelessWidget {
                   spacing: 8,
                   children: [
                     //AssetCardButton(backgroundColour: Colors.blueAccent, foregroundColour: Colors.white, buttonText: 'Go back to all assets', callback: () {}),
-                    AssetCardButton(backgroundColour: Colors.orangeAccent, foregroundColour: Colors.white, buttonText: 'Update', callback: () {}),
-                    AssetCardButton(backgroundColour: Colors.redAccent, foregroundColour: Colors.white, buttonText: 'Delete', callback: () {}),
+                    AssetButton(iconData: Icons.person_pin_circle, backgroundColour: Colors.orangeAccent, foregroundColour: Colors.white, buttonText: 'Update', callback: () {}),
+                    AssetButton(iconData: Icons.delete, backgroundColour: Colors.redAccent, foregroundColour: Colors.white, buttonText: 'Delete', callback: () {}),
                   ],
                 )
               )

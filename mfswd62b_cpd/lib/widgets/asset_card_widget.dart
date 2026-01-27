@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mfswd62b_cpd/mappers/asset_type_to_icon_mapper.dart';
 import 'package:mfswd62b_cpd/models/asset.dart';
-import 'package:mfswd62b_cpd/widgets/asset_card_button.dart';
+import 'package:mfswd62b_cpd/widgets/asset_button.dart';
 
 import '../screens/view_asset_screen.dart';
 
@@ -32,13 +32,13 @@ class AssetCardWidget extends StatelessWidget {
                   alignment: WrapAlignment.end,
                   spacing: 8,
                   children: [
-                    AssetCardButton(backgroundColour: Colors.blueAccent, foregroundColour: Colors.white, buttonText: 'View', callback: () {
+                    AssetButton(iconData: Icons.view_agenda, backgroundColour: Colors.blueAccent, foregroundColour: Colors.white, buttonText: 'View', callback: () {
                       Navigator.of(context).push(MaterialPageRoute(builder: (context) {
                         return ViewAssetScreen(assetToDisplay: assetToDisplay);
                       }));
                     }),
-                    AssetCardButton(backgroundColour: Colors.orangeAccent, foregroundColour: Colors.white, buttonText: 'Update', callback: () {}),
-                    AssetCardButton(backgroundColour: Colors.redAccent, foregroundColour: Colors.white, buttonText: 'Delete', callback: () {}),
+                    AssetButton(iconData: Icons.person_pin_circle, backgroundColour: Colors.orangeAccent, foregroundColour: Colors.white, buttonText: 'Update', callback: () {}),
+                    AssetButton(iconData: Icons.delete, backgroundColour: Colors.redAccent, foregroundColour: Colors.white, buttonText: 'Delete', callback: () {}),
                   ],
                 )
               )

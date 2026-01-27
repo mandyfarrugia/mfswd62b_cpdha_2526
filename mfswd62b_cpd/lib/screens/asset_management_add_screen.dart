@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:mfswd62b_cpd/providers/asset_state_notifier.dart';
-import 'package:mfswd62b_cpd/widgets/asset_card_button.dart';
+import 'package:mfswd62b_cpd/widgets/asset_button.dart';
 import 'package:mfswd62b_cpd/widgets/asset_management_navigation_menu_drawer.dart';
 import '../models/asset.dart';
 import '../models/asset_type.dart';
@@ -139,7 +139,8 @@ class _AssetManagementAddScreenState extends ConsumerState<AssetManagementAddScr
             ),
             const SizedBox(width: 12),
             Row(children: [
-                AssetCardButton(
+                AssetButton(
+                  iconData: Icons.add,
                   backgroundColour: Colors.deepPurpleAccent,
                   foregroundColour: Colors.white,
                   buttonText: 'Add new asset',

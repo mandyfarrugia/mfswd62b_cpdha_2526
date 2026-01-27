@@ -14,10 +14,17 @@ class AssetLocationWidget extends StatelessWidget {
     final isLocationAvailable = assetToDisplay.assetLocation.hasValue;
 
     if (!isLocationAvailable || latitude == null || longitude == null) {
-      return const Text(
-        'No location data available',
-        style: TextStyle(color: Colors.grey),
-      );
+      return Column(children: [
+        Row(children: [
+          Icon(Icons.location_on, color: Colors.redAccent),
+            SizedBox(width: 8),
+            Text(
+              'Asset location',
+              style: TextStyle(fontWeight: FontWeight.bold),
+            ),
+        ]),
+        const Text('No location data available!')
+      ]);
     }
 
     return Column(
@@ -26,14 +33,14 @@ class AssetLocationWidget extends StatelessWidget {
         Row(
           children: const [
             Icon(Icons.location_on, color: Colors.redAccent),
-            SizedBox(width: 6),
+            SizedBox(width: 8),
             Text(
               'Asset location',
               style: TextStyle(fontWeight: FontWeight.bold),
             ),
           ],
         ),
-        const SizedBox(height: 6),
+        const SizedBox(height: 8),
         Text(
           'Latitude: $latitude\nLongitude: $longitude',
           style: const TextStyle(color: Colors.black),
@@ -48,8 +55,13 @@ class AssetLocationWidget extends StatelessWidget {
               'https://www.openstreetmap.org/?mlat=$latitude&mlon=$longitude#map=16/$latitude/$longitude',
             );
 
-            if (await canLaunchUrl(uri)) {
-              await launchUrl(uri, mode: LaunchMode.externalApplication);
+            if (!await launchUrl(
+              uri,
+              mode: LaunchMode.externalApplication,
+            )) {
+              ScaffoldMessenger.of(context).showSnackBar(
+                const SnackBar(content: Text('Could not open map')),
+              );
             }
           },
         ),
