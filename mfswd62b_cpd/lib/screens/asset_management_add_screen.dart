@@ -29,7 +29,7 @@ class _AssetManagementAddScreenState extends ConsumerState<AssetManagementAddScr
     super.dispose();
   }
 
-  void _addAsset() {
+  void addAsset() {
     final assetName = this._assetNameController.text.trim();
     final serialNumber = this._serialNumberController.text.trim();
     final description = this._descriptionController.text.trim();
@@ -132,7 +132,7 @@ class _AssetManagementAddScreenState extends ConsumerState<AssetManagementAddScr
                   backgroundColour: Colors.blueAccent,
                   foregroundColour: Colors.white,
                   buttonText: 'Add new asset',
-                  callback: _addAsset
+                  callback: addAsset
                 )
               ],
             )

@@ -64,7 +64,6 @@ class AdvancedAssetCardWidget extends ConsumerWidget {
                   alignment: WrapAlignment.end,
                   spacing: 8,
                   children: [
-                    AssetButton(iconData: Icons.person_pin_circle, backgroundColour: Colors.orangeAccent, foregroundColour: Colors.white, buttonText: 'Update', callback: () {}),
                     AssetButton(
                       iconData: Icons.delete,
                       backgroundColour: Colors.redAccent,
@@ -84,7 +83,7 @@ class AdvancedAssetCardWidget extends ConsumerWidget {
                           Navigator.of(context).pop();
                         }
                       }
-                      }),
+                    }),
                   ],
                 )
               )

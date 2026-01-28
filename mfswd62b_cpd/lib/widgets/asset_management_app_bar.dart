@@ -20,6 +20,7 @@ class AssetManagementAppBar extends ConsumerWidget implements PreferredSizeWidge
     }
 
     if(context.mounted) {
+      Navigator.pop(context);
       Navigator.of(context).push(MaterialPageRoute(builder: (context) => const AssetManagementAddScreen()));
     }
   }

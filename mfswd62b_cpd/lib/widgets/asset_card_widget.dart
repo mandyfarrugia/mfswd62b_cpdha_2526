@@ -38,7 +38,6 @@ class AssetCardWidget extends ConsumerWidget {
                         return ViewAssetScreen(assetToDisplay: assetToDisplay);
                       }));
                     }),
-                    AssetButton(iconData: Icons.person_pin_circle, backgroundColour: Colors.orangeAccent, foregroundColour: Colors.white, buttonText: 'Update', callback: () {}),
                     AssetButton(iconData: Icons.delete, backgroundColour: Colors.redAccent, foregroundColour: Colors.white, buttonText: 'Delete', callback: () async {
                       bool? deleteConfirmed = await deleteConfirmationService.showDeleteConfirmationDialog(context);
 
