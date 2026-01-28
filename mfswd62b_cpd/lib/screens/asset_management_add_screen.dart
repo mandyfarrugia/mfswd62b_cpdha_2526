@@ -5,6 +5,7 @@ import 'package:mfswd62b_cpd/widgets/asset_button.dart';
 import 'package:mfswd62b_cpd/widgets/asset_management_navigation_menu_drawer.dart';
 import '../models/asset.dart';
 import '../models/asset_type.dart';
+import '../widgets/asset_management_app_bar.dart';
 
 class AssetManagementAddScreen extends ConsumerStatefulWidget {
   const AssetManagementAddScreen({super.key});
@@ -57,19 +58,7 @@ class _AssetManagementAddScreenState extends ConsumerState<AssetManagementAddScr
   Widget build(BuildContext context) {
     return Scaffold(
       drawer: const AssetManagementNavigationMenuDrawer(),
-      appBar: AppBar(
-        title: Text('Asset Management'),
-        backgroundColor: Colors.blueAccent,
-        foregroundColor: Colors.white,
-        actions: [
-          IconButton(
-            icon: Icon(Icons.add),
-            onPressed: () {
-              Navigator.of(context).push(MaterialPageRoute(builder: (context) => const AssetManagementAddScreen()));
-            }
-          ),
-        ],
-      ),
+      appBar: const AssetManagementAppBar(title: 'Add new asset'),
       body: Padding(
         padding: const EdgeInsets.all(16),
         child: Column(
