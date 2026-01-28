@@ -1,0 +1,35 @@
+name: Automating build pipeline for a Flutter application.
+
+on:
+  push:
+    branches:
+      - main
+
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Download the contents of the repository onto the Ubuntu Linux machine provided by GitHub.
+      uses: actions/checkout@v3
+
+    - name: Set up Flutter on said machine, the version should be the same as the one on which the project is based.
+      uses: subosito/flutter-action@v2
+      with:
+        flutter-version: "3.38.3"
+
+    - name: Install the dependencies specified in pubspec.yaml
+      run: flutter pub get
+
+    - name: Clean the project by removing all existing build files
+      run: flutter clean
+
+    - name: Fetch the packages again from pubspec.yaml
+      run: flutter pub get
+
+    - name: Build application targeting the Android platform.
+      run: flutter build apk --debug

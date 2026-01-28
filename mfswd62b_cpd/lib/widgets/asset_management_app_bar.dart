@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:mfswd62b_cpd/services/firebase_analytics_service.dart';
 
 import '../providers/battery_service_provider.dart';
 import '../screens/asset_management_add_screen.dart';
@@ -36,6 +37,7 @@ class AssetManagementAppBar extends ConsumerWidget implements PreferredSizeWidge
             icon: Icon(Icons.add),
             onPressed: () async {
               await this.disableAccessToAddFunctionalityIfBatteryIsLow(context, ref);
+              await FirebaseAnalyticsService.logLowBatteryBlocked();
             }
           ),
         ]

@@ -5,6 +5,7 @@ import '../main.dart';
 import '../mappers/asset_type_to_icon_mapper.dart';
 import '../models/asset.dart';
 import '../providers/asset_state_notifier.dart';
+import '../services/firebase_analytics_service.dart';
 import './asset_button.dart';
 
 class AdvancedAssetCardWidget extends ConsumerWidget {
@@ -74,6 +75,7 @@ class AdvancedAssetCardWidget extends ConsumerWidget {
 
                       if(deleteConfirmed != null && deleteConfirmed) {
                         ref.read(assetProvider.notifier).deleteAsset(assetToDisplay);
+                        await FirebaseAnalyticsService.logDeleteAsset();
 
                         if(context.mounted) {
                           ScaffoldMessenger.of(context).showSnackBar(

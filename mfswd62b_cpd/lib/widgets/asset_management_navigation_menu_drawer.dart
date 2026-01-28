@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:mfswd62b_cpd/screens/asset_management_add_screen.dart';
 import '../providers/battery_service_provider.dart';
 import '../screens/asset_management_home_screen.dart';
+import '../services/firebase_analytics_service.dart';
 import '../services/notification_service.dart';
 
 class AssetManagementNavigationMenuDrawer extends ConsumerWidget {
@@ -14,6 +15,7 @@ class AssetManagementNavigationMenuDrawer extends ConsumerWidget {
 
     if(batteryLevel < 20) {
       await NotificationService.showNotification(title: 'Battery is low!', body: 'New assets cannot be added to the system until battery level reaches at least 20%.');
+      await FirebaseAnalyticsService.logLowBatteryBlocked();
       return;
     }
 

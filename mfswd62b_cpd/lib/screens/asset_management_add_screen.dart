@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:mfswd62b_cpd/providers/asset_state_notifier.dart';
+import 'package:mfswd62b_cpd/screens/asset_management_home_screen.dart';
 import 'package:mfswd62b_cpd/widgets/asset_button.dart';
 import 'package:mfswd62b_cpd/widgets/asset_management_navigation_menu_drawer.dart';
 import '../models/asset.dart';
 import '../models/asset_type.dart';
+import '../services/firebase_analytics_service.dart';
 import '../widgets/asset_management_app_bar.dart';
 
 class AssetManagementAddScreen extends ConsumerStatefulWidget {
@@ -29,7 +31,7 @@ class _AssetManagementAddScreenState extends ConsumerState<AssetManagementAddScr
     super.dispose();
   }
 
-  void addAsset() {
+  Future<void> addAsset() async {
     final assetName = this._assetNameController.text.trim();
     final serialNumber = this._serialNumberController.text.trim();
     final description = this._descriptionController.text.trim();
@@ -50,8 +52,11 @@ class _AssetManagementAddScreenState extends ConsumerState<AssetManagementAddScr
     );
 
     ref.read(assetProvider.notifier).addAsset(asset);
+    await FirebaseAnalyticsService.logAddAsset();
 
-    Navigator.pop(context);
+    if(context.mounted) {
+      Navigator.of(context).push(MaterialPageRoute(builder: (context) => const AssetManagementHomeScreen()));
+    }
   }
 
   @override
